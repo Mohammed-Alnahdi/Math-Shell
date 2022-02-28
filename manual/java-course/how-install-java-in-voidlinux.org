@@ -1,0 +1,50 @@
+#+Title: How install Java in Voidlinux (glibc only)
+#+Author: Mohammed K Alnahdi
+#+Date: 13th Feb 2022
+
+* Installing Java via xbps
+Installing Java in Voidlinux is easy with package manager xbps, but you must download more packages.
+
+** Install Java Runtime Environment
+*Java Runtime Environment (JRE)* is software layer that runs on top of computer's operating system software and provides the /class libraries/ and other resources that a speific Java program needs to run.
+
+#+begin_src bash
+sudo xbps-install -S openjdk-jre
+#+end_src
+
+** Install Java Development Kit.
+*Java Development Kit* is tools that compile your source codes. Also ~java~ and ~javac~ include this package.
+
+#+begin_src bash
+sudo xbps-install -S openjdk
+#+end_src
+
+* Installing Oracle (Optional)
+To install Oracle JRE and JDK you must install void-repo-nonfree.
+
+#+begin_src bash
+sudo xbps-install void-repo-nonfree
+#+end_src
+
+Then install oracle-jre and oracle-jdk
+
+* Empty Windows in None-Reparenting Window Manager.
+Java maintains a hard-coded list of window managers that it knows about.
+When you use a different WM it simply assumes that it is reparenting and may present you with empty grey windows if your WM is actually not reparenting.
+If you run into this problem with OpenJDK version *8u40_3* or above, you can simply set the environment variable:
+_JAVA_AWT_WM_NONREPARENTING=1
+and your GUI applications should behave as expected. In prior versions or when using the Oracle JDK you may need to trick Java into thinking that you are using a non-reparenting W< that it knows about, like LG3D.
+To do that you need the *wmname* tool from the same-named repo package:
+
+#+begin_src bash
+sudo xbps-install -S wmname
+#+end_src
+
+Simply call it like this:
+
+#+begin_src bash
+wmname LG3D
+#+end_src
+
+Afterwards your Java GUI applications should run as intended.
+However, you need to re-run the program every time your WM restarts or you reboot the computer.

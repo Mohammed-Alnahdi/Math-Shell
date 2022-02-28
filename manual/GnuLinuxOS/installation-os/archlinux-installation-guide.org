@@ -1,0 +1,406 @@
+#+TITLE: Download and Install Archlinux via DestroTube
+#+Author: Mohammed K Alnahdi
+#+Date: 22th Feb 2022
+
+* Introduction
+This tutorial is about how install archlinux EFI and you can return to ArchWiki page of Installation
+
+* Perparing PC Process
+All perparing  of this process is by root mode (to acess for all privilege).
+
+** Select the Keyboard Map.
+To list all keyboard maps that avaliable you can run the command
+
+#+begin_src sh
+ls /usr/share/kbd/keymaps/**/*.map.gz
+#+end_src
+
+if the list is huge and your are not able to read it you can use pipe.
+
+#+begin_src sh
+ls /usr/share/kbd/keymaps/**/*.map.gz | less
+#+end_src
+
+Then load your keyboard layout that you need, *We suggest to load us.map.gz*
+
+#+begin_src sh
+loadkeys us.map.gz
+#+end_src
+
+** Check Internet Connection
+ISO or Live CD contain icu tools, So you can use ping to chech the internet.
+
+#+begin_src sh
+ping -c 3 https://archlinux.org
+#+end_src
+
+
+** Update Time Before Start.
+To update Time you can use ~timedatectl~.
+/timedatectl/ : may use be used to query and change the system clock and its settings, and enable or disable time synchronization services.
+
+#+begin_src sh
+timedatectl set-ntp true
+#+end_src
+
+if you want double check about date and time:
+
+#+begin_src sh
+timedatectl status
+#+end_src
+
+** Partition the Disks
+When recognized the live system, disks are assigned to a /block device/ such as /dev/sda, /dev/nvme0n1 or /dev/mmcblk0.
+To identify these devices us *lsblk* or *fdisk*. 
+
+#+begin_src sh
+lsblk -l
+#+end_src
+
+or
+#+begin_src sh
+fdisk -l
+#+end_src
+
+and we will continue with /fdisk/.
+
+=Result=
+The Results ending in rom, loop or airoot may be ignored.
+The following partitions are required for a chosen device:
+	- One partition for the root directory /
+	- For booting in UEFI mode: an EFI systemm partition.
+*** Start Partition
+To Start for make partition disk
+
+#+begin_src sh
+fdisk /dev/sda
+#+end_src
+
+We assume that partition named sda.
+
+Then Must use Table for the partition by g for /GPT/
+
+Then follow the partion command by below:
+
+*Make UEFI Partition*
+
+#+begin_src sh
+Command (m for help): n
+			1
+			 defult
+			 	+550M
+#+end_src
+
+*Make Swap Partition*
+
+#+begin_src sh
+Command (m for help): n
+			2
+			 defult
+			 	+4G
+#+end_src
+
+*Make Root Directory*
+
+
+#+begin_src sh
+Command (m for help): n
+			3
+			 defult
+			 	defualt
+#+end_src
+
+
+*** Example Layouts:
+
+UEFI with GPT
+
+| Mount Point | Partition                 | Partition Type       | Suggested Size          |
+|-------------+---------------------------+----------------------+-------------------------|
+| /mnt/boot   | /dev/efi_system_partition | EFI System partition | At least 300 MiB        |
+| [SWAP]      | /dev/swap_partition       | Linux swap           | More Than 512 MiB       |
+| /mnt        | /Dev/root_partition       | Linux x86-64 root(/) | Remainder ot the Device |
+|-------------+---------------------------+----------------------+-------------------------|
+
+*If you are not using EFI this partion Layouts you can use it*
+
+BIOS with MBR
+| Mount Point | Partition           | Partition Type | Suggested size      |
+|-------------+---------------------+----------------+---------------------|
+| [SWAP]      | /dev/swap_partition | Linux swap     | More than 512 MiB   |
+| /mnt        | /dev/root_partition | Linux          | Remainder of Device |
+|-------------+---------------------+----------------+---------------------|
+
+** Change your Partiton Mode and Save Settings
+In mode fdisk/sda you must choose types for SWAP and UEFI partitions before exit.
+
+*Make Type for UEFI Partition*
+
+#+begin_src sh
+    Command (m for help): t
+    partition number (1-3, default 3): 1
+  partition type or alias (type L to list all) : 1
+#+end_src
+
+*Make Type for Swap Partition*
+
+#+begin_src sh
+    Command (m for help): t
+    partition number (1-3, default 3): 2
+  partition type or alias (type L to list all) : 19
+#+end_src
+
+*Save Settings and Exit*
+
+#+begin_src sh
+    Command (m for help): w
+#+end_src
+
+** Make File System
+We should make file system for every partition:
+
+*** Make File System for UEFI Partition
+to make UEFI should partition be F32 by running this command:
+
+#+begin_src sh
+mkfs.fat -F32 /dev/sda1
+#+end_src
+
+*** Make File System for Swap.
+SWAP partition need only swap file system by command:
+
+#+begin_src sh
+mkswap /dev/sda2
+#+end_src
+
+Then turn on run swap partition:
+
+#+begin_src sh
+swapon /dev/sda2
+#end_src
+
+*** Make Root Directory File System
+In this case, we will use EXT4 and will explain deffrent between other File System.
+
+#+begin_src sh
+mkfs.ext4 /dev/sda3
+#+end_src
+
+**** The Diffrence Between File System.
+
+* Install Process
+Before Start Your Install process you must to mount Root Directory to /mnt by command
+
+#+begin_src sh
+mount /dev/sda3 /mnt
+#+end_src
+
+** Install Base packages.
+You can install the Core of Arch Linux.
+
+#+Begin_src sh
+pacstrap /mnt base linux linux-firmwar base-devel
+#+end_src
+
+This what you install
+
+| Package        | Contain                      | Explain                                                              |
+|----------------+------------------------------+----------------------------------------------------------------------|
+| base           | Core the System              |                                                                      |
+|----------------+------------------------------+----------------------------------------------------------------------|
+| linux          | Linux Kernel                 |                                                                      |
+|----------------+------------------------------+----------------------------------------------------------------------|
+| linux-firmware | Kernel for Wi-Fi and Network |                                                                      |
+|----------------+------------------------------+----------------------------------------------------------------------|
+| base-devel     | autoconf                     | A GNU tool for automatically configuring source code                 |
+|                | automake                     | A GNU tool for automatically creating Makefiles                      |
+|                | binutils                     | A set of programs to assemble and manipulate binary and object files |
+|                | bison                        | The GNU general parser generator                                     |
+|                | fakeroot                     | Tool for simulating superuser privileges                             |
+|                | file                         | File type identification utility.                                    |
+|                | findutils                    | GNU utilities to locate files.                                       |
+|                | flex                         | A tool for generation text-scanning programs.                        |
+|                | gawk                         | GNU version of awk.                                                  |
+|                | gcc                          | The GNU Compiler Collection -C and C++ frontends.                    |
+|                | gettext                      | CNU intermationalization library.                                    |
+|                | grep                         | A string search utility.                                             |
+|                | groff                        | GNU troff text-formatting system.                                    |
+|                | gzip                         | GNU compression utility.                                             |
+|                | libtool                      | A generic library support script.                                    |
+|                | m4                           | The GNU macro processor.                                             |
+|                | make                         | GNU make utility to maintain groups of programs.                     |
+|                | pacman                       | A library-based package manager with dependency support.             |
+|                | patch                        | A utility to apply patch files to original sources.                  |
+|                | pkgconf                      | Package compiler and linker metadata toolkit.                        |
+|                | sed                          | GNU steam editor.                                                    |
+|                | sudo                         | Give certain users the ability to run some commands as root.         |
+|                | texingo                      | GNU documentation system for on-line information and printed output. |
+|                | which                        | A utility to show the full path of commands.                         |
+|----------------+------------------------------+----------------------------------------------------------------------|
+
+It take few moments.
+
+** File System Auto Deduction
+To help you install file system for auto detaction press:-
+
+#+begin_src sh
+genfstab -U /mnt >> /mnt/etc/fstab
+#+end_src
+
+** Change Root
+Change /root/ from live CD or flace to root in your system by command
+
+#+Begin_src sh
+arch-chroot /mnt
+#+end_src
+
+** Set Your Time Zone
+To set your time zone is by link your capital with localtime by command
+
+#+Begin_src sh
+ln -sf /usr/share/zoneinfo/[REGION]/[CAPITAL] /etc/localtime
+#+end_src
+
+then configration your Hardware Clock by command
+
+#+Begin_src sh
+hwclock --systohc
+#+end_src
+
+** Add Packages
+To complete your installation you need some packages for some need it.
+
+#+Begin_src sh
+pacman -S vim nano sudo grup efibootmgr dosfstools os-prober mtools
+#+end_src
+
+The packages your add is :
+
+
+** Add Language
+To add language uncommint en_US.UTF-8 in file local.gen
+
+#+Begin_src sh
+vim /etc/local.gen
+#+end_src
+
+then run the commmand
+
+#+begin_src sh
+locel-gen
+#+end_src
+
+** Naming your Hostname
+Add your hostname in file in file /etc/hostname.
+
+#+Begin_src sh
+vim /etc/hostname
+#+end_src
+
+Then change your Hosts in /etc/hosts
+
+#+Begin_src sh
+vim /etc/hots
+#+end_src
+
+add these lines:
+
+#+Begin_src sh
+127.0.0.1	localhost
+::1		localhost
+127.0.1.1	YourHostName.localdomain YourHostName
+#+end_src
+
+/YourHostName/ is your hostname in /etc/hostname.
+
+* User Setup
+Setup your Users and root
+
+** Make Root Password
+To set your root password run your command:
+
+#+Begin_src sh
+passwd
+#+end_src
+
+** Add your User
+Making new user is by command below:
+
+#+Begin_src sh
+useradd -m username
+#+end_src
+
+/username/ is your user name and -m flag is making user's home directory.
+
+** add password to username
+The same command of your root password but we adding username.
+
+#+Begin_src sh
+passwd username
+#+end_src
+
+** Add Group
+We must give user group of permissions
+
+#+Begin_src sh
+usermood -aG wheel, audio, video, optical, Storage username
+#+end_src
+
+** Add Privilege
+To add privilege uncommint %wheel ALL = (ALL) ALL while run this command
+
+#+Begin_src sh
+visudo
+#+end_src
+
+* Setup Bootloader
+
+Before make bootloader you should make boot file
+
+#+Begin_src sh
+mkdir /boot/EFI
+#+end_src
+
+then mount your partition of EFI to this file
+
+#+Begin_src sh
+mount /dev/sda1 /boot/EFI
+#+end_src
+
+After that install your grub
+
+#+Begin_src sh
+grub-install --target=x86_64-efi --bootloader-id=GRUB --recheck
+#+end_src
+
+finally, if you dont have any error, compile your configration by command
+
+#+Begin_src sh
+grub-mkconfig -o /boot/grub/grub.cfg
+#+end_src
+
+* Finalization
+Download your Network Manager and enable it.
+
+#+Begin_src sh
+pacman -S networkmanger
+#+end_src
+
+to enable it
+
+#+Begin_src sh
+systemctl enable NetworkManager
+#+end_src
+
+then exit from chroot.
+
+#+Begin_src sh
+exit
+#+end_src
+
+unmount before close session from /mnt
+
+#+Begin_src sh
+umount -l /mnt
+#+end_src
+

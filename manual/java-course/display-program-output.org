@@ -1,0 +1,20 @@
+#+Title: Display Program Output in Screen
+#+Author: Mohammed K Alnahdi
+#+Date: 14th Feb 2022
+
+* Introduction
+  In Java we use print command as we mentioned before in [[~/manual/java-course/How-print-strings-on-screen.org][print ways]].
+
+* Escape Sequence
+
+| Escape Sequence | Description                                                                                                                                |
+|-----------------+--------------------------------------------------------------------------------------------------------------------------------------------|
+| \n              | Newline. Position the screen cursor at the beginning of the /text/ line                                                                    |
+| \t              | Horizontal tab. Move the screen cursor to the next tab stop.                                                                               |
+| \r              | Carriage return. Position the screen cursor at the beginning og the /current/ line -                                                       |
+|                 | Do /not/ advance to the next line. Any chatacters output after the /carriage return overwrite the characters previosly output on the line. |
+| \\              | backslash. Used to point a backslash chatacter.                                                                                            |
+| \"              | Double quote. Used to print a double-quote chatacter.                                                                                      |
+|-----------------+--------------------------------------------------------------------------------------------------------------------------------------------|
+
+

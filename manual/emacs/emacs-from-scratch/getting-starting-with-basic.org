@@ -1,0 +1,54 @@
+#+Title: Getting Started With Basic Usable Configration
+#+Author: Mohammed K Alnahdi.
+#+Date: 21th Feb 2022
+
+* Inhibit Startup Message
+
+  #+begin_src emacs-lisp
+		(setq inhibit-startup-message t)
+
+	    (scroll-bar-mode -1)   ;;Disable visible scrolbar
+	    (tool-bar-mode -1)     ;; Disable the toolbar
+            (set-fringe-mode 10)   ;; Give scope breathing room
+            (menu-bar-mode -1)     ;; Disable menu Bar
+  #+end_src
+
+* Set up the visible bell
+
+  #+begin_src emacs-lisp
+  (setq visible-bell t)
+  #+end_src
+
+* Set font
+
+  #+begin_src emacs-lisp
+  (set-face-attribute 'default nil :font " Foo-font-name" :hetght 280) ;;280 size
+  #+end_src
+
+* Set Theme
+
+  #+begin_src emacs-lisp
+  (load-theme 'THEME-NAME) ;;must put semicolon
+  #+end_src
+* Package Repos
+
+  #+begin_src emacs-lisp
+  (require 'package)
+
+  (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+  			   ("melpa-stable" . "https://stable.melpa.org/packages/")
+			   ("org" . "https://orgmode.org/elpa/")
+			   ("elpa" . "https://elpa.gnu.org/packages/")))
+  (package-initalize)
+  (unless package-archive-contents
+      (package-refresh-contents))
+  #+end_src
+
+* Initialize use-package on non-linux platforms
+
+  #+begin_src emacs-lisp
+	  (unless (package-installed-p 'use-package)
+	(package-install 'use-package))
+    (require 'use-package)
+(steq use-package-always-ensture t)
+  #+end_src

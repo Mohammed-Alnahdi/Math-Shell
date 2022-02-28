@@ -1,0 +1,116 @@
+#+TITLE: Basic Command in Router and Switch
+#+Author: Mohammed K Alnahdi
+#+Date: 10th Feb 2022
+
+* Basic Command in Router
+We have Command while using telnet or terminal in Putty
+
+** Table of most command in telnet and terminal in Putty
+Tables below will show what action take when execute the command:
+
+*** User Mode and Pribileged Mode status
+
+  | Command                                 | Action                          |
+  |-----------------------------------------+---------------------------------|
+  | Router> ?                               | Query All command               |
+  | Router> enable                          | To get to Privileged Mode       |
+  | Router# disable                         | to get back to User Mode        |
+  | Router# config terminal                 | Enter global configuration mode |
+  | Router(config) interface <name_of_port> | Enter to the port in port.      |
+  |-----------------------------------------+---------------------------------|
+  
+*** History and Disable Advanced Editing
+
+  | Command                       | Action                               |
+  |-------------------------------+--------------------------------------|
+  | Router> terminal history size | To set the command Buffer size       |
+  | Router> show history          | To show the command buffer           |
+  | Router> terminal no editing   | To disable advanced editing features |
+  |-------------------------------+--------------------------------------|
+
+*** Veiw Status Mode, Version IOS, and Display Interface
+
+  | Command                     | Action                                                |
+  |-----------------------------+-------------------------------------------------------|
+  | Router# show version        | View IOS version                                      |
+  | Router# show interface      | Display interfaces on router and their status         |
+  | Router# show flash          | View IOS version size of IOS, and free space in FLASH |
+  | Router# show running-config | View current configutation file (RAM)                 |
+  | Router#show startup-config  | View saved configuration file (NVRAM)                 |
+  |-----------------------------+-------------------------------------------------------|
+
+*** IP check in Interface and Protocol
+
+  | Commmand                        | Action                                               |
+  |---------------------------------+------------------------------------------------------|
+  | Router# show ip interface brief | Check interface status                               |
+  | Router# show ip protocol        | Display ip protocol info                             |
+  | Router# show protocol           | Display which protocols are configured on the router |
+  |---------------------------------+------------------------------------------------------|
+
+*** CPU check
+    
+  | Command                    | Action                                                     |
+  |----------------------------+------------------------------------------------------------|
+  | Router# show processes cpu | View CPU utilization                                       |
+  | Router# show processes     | View info about programs in RAM                            |
+  | Router# reload             | Reboot the router and reload the startup config from NVRAM |
+  |----------------------------+------------------------------------------------------------|
+
+*** IP table and Debug
+
+| Command                       | Action                    |
+|-------------------------------+---------------------------|
+| Router# show ip route         | View the IP routing table |
+| Router# debug ip rip          | View RIP Debug            |
+| Router# debug ip igrp events  | View IGRP Debug           |
+| Router(config)# no router rip | Disable RIP routing       |
+|-------------------------------+---------------------------|
+
+*** How to Save setup in router.
+
+| Command                          | Action                                                            |
+|----------------------------------+-------------------------------------------------------------------|
+| Router# copy flash tftp          | Backup IOS to file server                                         |
+| Router# copy tftp flash          | Upgrade the IOS from the file server.                             |
+| Router# copy running-config tftp | Copy running config file from RAM to TFRP                         |
+| Router# copy tftp running-config | Copy running config file from TFRP to NVRAM                       |
+| Router# copy tftp startup-config | Copy startup config file from FTTP to RAM                         |
+| Router# erase startup-config     | Erase the configuration file in NVRAM [run initial config dialog] |
+|----------------------------------+-------------------------------------------------------------------|
+
+*** Booting and start router
+
+| Command                                                         | Action                                                           |
+|-----------------------------------------------------------------+------------------------------------------------------------------|
+| Router(config)# boot system flash (ios_filename)                | Tell router which IOS file in Flash to boot from                 |
+| Router(config)# boot system tftp (ios_filename) tftp_ip_address | Tell router which IOS to request from the TFTP server (fallback) |
+| Router(config)# boot rom                                        | Tell router to boot from ISO in ROM                              |
+|-----------------------------------------------------------------+------------------------------------------------------------------|
+
+*** Set Password Encryption
+    
+
+| Command                                        | Action                    |
+|------------------------------------------------+---------------------------|
+| Router(config)# service password-encryption    | Password can be encrypted |
+| Router(config)# no service password-encryption | To de-encrypted password  |
+|------------------------------------------------+---------------------------|
+
+*** Turn On/Off The Port
+
+| Command                        | Actions                     |
+|--------------------------------+-----------------------------|
+| Router(config-if)# no shutdown | Turn On the Port in router  |
+| Router(config-if)# shutdown    | Turn off the port in router |
+|--------------------------------+-----------------------------|
+
+
+
+*** Set IP for The Port
+
+    | Commands                                                     | Action                |
+    |--------------------------------------------------------------+-----------------------|
+    | Router(config-if)# ip address <ip_Address> <Mask_of_network> | set address for ports |
+    |--------------------------------------------------------------+-----------------------|
+

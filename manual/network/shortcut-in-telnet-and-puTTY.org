@@ -1,0 +1,19 @@
+#+TITLE: Shortcut In Telnet And PuTTy
+#+Author: Mohammed K Alnahdi
+#+Date: 10th Feb 2022
+
+* This is Some Shortcut in the Telnet and PuTTy
+
+Must shortcuts comes from emacs shortcuts, So dont forget about it.
+
+| Command          | Actions                                                |
+|------------------+--------------------------------------------------------|
+| Ctrl + A         | To move to the beginning of the command line.          |
+| Ctrl + E         | To move to the end of the command line.                |
+| Ctrl + F         | To move to the forward one character.                  |
+| Ctrl + B         | To move to the back one character.                     |
+| Ctrl + W         | To move forward one word.                              |
+| Ctrl + U         | To etase a line.                                       |
+| Ctrl + R         | To redisplay a line.                                   |
+| Router# Ctrl + z | Ends Configuration mode and returns to privileged mode |
+|------------------+--------------------------------------------------------|

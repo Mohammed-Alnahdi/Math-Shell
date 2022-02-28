@@ -1,0 +1,17 @@
+#+TITLE: Unicode of Charecters in The Page.
+#+Author: Mohammed K Alnahdi
+#+Date: <2022-02-28 Mon>
+
+* Inrtoduction
+The page is accepting latin ascii code as default, but when make page accepting all languages ascii we use <meta> tags.
+
+* Usage of <meta> for languages
+/meta/ tags takes nomerous attribution, but we need only /charset/ to our page to accepting languages.
+
+#+begin_example html
+<head>
+<meta charset="utf-8" >
+</head>
+#+end_example
+
+the /meta/ tags should be in head tags.

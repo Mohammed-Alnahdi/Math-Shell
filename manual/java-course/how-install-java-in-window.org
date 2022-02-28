@@ -1,0 +1,19 @@
+#+Title: Installing Java in Windows
+#+Author: Mohammed K Alnahdi
+#+DATE: 13th Feb 2022
+
+* Introduction
+Java is owned by ORACLE, that is mean you should to go with [[https://www.oracle.com/index.html][ORACLE webpage]] to download the JAVA.
+You need to install JDK to install Java Development Kits that able compile your source code.
+* How Install ?
+There are two way to install Java in windows. Both ways to you should open webpage then:
+
+Menu --> Downloads and Trials --> Java --> All Java Downloads
+
+** First Way: Install JAVA with Netbeen.
+Netbeans is IDE for developing Java and you will see it in download page.
+The package of Netbeans include JDK
+
+** Second Way: Install JDK Independent.
+You can download JDK without IDE, /this way if you preffered another IDE not Netbeans/.
+the platform (JDK) is already in download page.

@@ -1,0 +1,17 @@
+#+Title: Introduction to Bash Scripting - Hello World
+#+Author: Mohammed K Alnahdi
+#+Date: 14th Feb 2022
+
+* Introduction - What is BASH is?
+
+* First BASH Script
+
+  #+begin_src bash
+
+  #!/bin/bash
+  # This script prints hello world to the terminal.
+  echo "Hello World"
+
+  #+end_src
+
+** Commint 

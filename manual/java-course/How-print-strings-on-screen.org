@@ -1,0 +1,38 @@
+#+Title: How Print strings on the screen
+#+Author: Mohammed K Alnahdi
+#+Date: 12th Feb 2022
+
+* Introduction
+  To print the sentences on the screen you able to use three ways:
+** Usings C/C++ printf command.
+   To use the code printf you must follow the source
+
+#+begin_src java
+   class DemoPrintStatement{
+     public static void main(String[] args){
+            System.out.printf("Hello Emacs");
+	    }
+	}
+#+end_src
+
+** Usings print command
+   To use the code by only print follow the source
+
+#+begin_src java
+    class DemoPrintStatement{
+     public static void main(String[] args){
+            System.out.print("Hello Emacs");
+	    }
+	}
+#+end_src
+
+** Usings println command
+   println is print setences independing line
+
+#+begin_src java
+    class DemoPrintStatement{
+     public static void main(String[] args){
+            System.out.println("Hello Emacs");
+	    }
+	}
+#+end_src

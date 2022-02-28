@@ -1,0 +1,52 @@
+#+TITLE: Attributes
+#+Author: Mohammed K Alnahdi
+#+Date: <2022-02-28 Mon>
+
+* About This file
+Here I will put all element and them attributes with its value and explaination.
+
+* Element
+
+** The Header <h1> to <h6>
+/h1/ to /h6/ is element for make text header size.
+
+| attributes | value  | explaination             |
+|------------+--------+--------------------------|
+| align      | center | Make the text in center. |
+|            | left   | Make the text in left.   |
+|            | right  | Make the text in right.  |
+|            |        |                          |
+|------------+--------+--------------------------|
+
+** The Font tags <font>
+/font/ element is for change font of text and all cover fonts.
+
+| attributes | value          | explaination                                  |
+|------------+----------------+-----------------------------------------------|
+| color      | red            | change font color to red.                     |
+|            | green          | change font color to green                    |
+|            | #fff           | change font to white. you can use font picker |
+|------------+----------------+-----------------------------------------------|
+| size       | 7              | change font size to 7.                        |
+|            | number of size |                                               |
+|------------+----------------+-----------------------------------------------|
+** The Input tags <input>
+/input/ tags is one of tags that doen't have end tags. it is for text box.
+
+| attributes | value    | explaination                 |
+|------------+----------+------------------------------|
+| type       | text     | input type is text.          |
+|            | passwrod | input type is passwrod.      |
+|------------+----------+------------------------------|
+| required   |          | textbox is required to fill. |
+|            |          |                              |
+|------------+----------+------------------------------|
+
+** Meta tags <meta>
+/meta/ tags is taking many of attributes.
+
+| attributes | value | explaination                                          |
+|------------+-------+-------------------------------------------------------|
+| charset    | UTF-8 | change the unicode to UTF-8 for accepting AR language |
+|            |       |                                                       |
+|------------+-------+-------------------------------------------------------|

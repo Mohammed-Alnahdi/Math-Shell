@@ -1,0 +1,30 @@
+#+TITLE: The Diffrence Tags Elements Attributes
+#+Author: Mohammed K Alnahdi
+#+Date: <2022-02-27 Sun>
+
+* Introduction:
+There are keywords in html used to describe the contain.
+    - Elements
+    - Tags
+    - Attributes.
+* Elements
+/Elements/ is tools that used to put meaning text. for example: if you want put title for your website, you will search about element that put your text inside the title bar (and this element called /title/). On other example: if you want make the header of your page, you will find it in Element called /h1/.
+
+* Tags
+/Tags/ is an element inside angle brackets ( < and > ). In example above we mentioned /title/ and /h1/, It will be like example below:
+
+
+#+begin_example html
+<title> the title here </title>
+
+<h1> the header file </h1>
+#+end_example
+
+and some tags have start tag and end tag like /title/ and /h1/ the title tags should start <title> and end </title>, the same with /h1/. On other hands there tags have not ends tags like <meta>.
+
+* Attributes
+/he attributes/is assign the tags some features. In case above, there is /h1/ you can use attribute called /align/ that make direction for your text.
+
+#+begin_example
+<h1 align="center"> The text will be in the center </h1>
+#+end_example

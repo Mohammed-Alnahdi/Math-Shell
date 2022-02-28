@@ -1,0 +1,44 @@
+#+TITLE: How Declarate the Variables in Java?
+#+Author: Mohammed K Alnahdi
+#+Date: 14th Feb 2022
+
+* What is Variable?
+A /variable/ is a location in the computer's memory where a value can be stored for use by a program.
+All /variable/ must be declared with a name and a data type before they can be used in a program. 
+
+
+* Java Data Types Size and Name
+In the table below I will write the /Data Type/ in java and the name that found in book.
+
+| Data Type   | Name and Expalain                            | Byte    | Size                                    |
+|-------------+----------------------------------------------+---------+-----------------------------------------|
+| char        | character or small integer                   | 1 byte  | signed: -128 to 127                     |
+|             |                                              |         | unsigned: 0 to 255                      |
+| int         | Integer                                      | 4 byte  | signed: -2,147,483,648 to 2,147,483,647 |
+|             |                                              |         | unsigned: 0 to 4,294,967,295            |
+| short int   | Short integer                                | 2bytes  | signed: -32,768 to 32,767               |
+|             |                                              |         | unsigned: 0 to 65,535.                  |
+| long int    | Long integer                                 | 4 byte  | signed -2147483648 to 2147483647        |
+|             |                                              |         | unsigned: 0 to 4294967295               |
+| bool        | Boolean value: it can take one of two value, | 1 byte  | true or false.                          |
+|             | True or Fulse.                               |         |                                         |
+| float       | Floating point number.                       | 4 bytes |                                         |
+|             |                                              |         |                                         |
+| double      | Double precision floating point number.      | 8 bytes |                                         |
+|             |                                              |         |                                         |
+| long double | Long double precision floating point number  | 8 bytes |                                         |
+|             |                                              |         |                                         |
+|-------------+----------------------------------------------+---------+-----------------------------------------|
+
+
+* How Declare Variable?
+Declatation must be used this ways by this rules *DataType Identifie*
+
+                 #+begin_src java
+
+		   int a, b, c;        //Declared three ints, a, b, and c.
+		   int a = 10, b = 10; //Ecample of initialization
+		   byte B = 22;        // inializes a byte type variable b.
+		   double pi = 3.14159; // declares and assigns a balue of PI.
+                   char a = 'a';       // the char variable ASCII initialized with value 'a'.
+                 #+end_src

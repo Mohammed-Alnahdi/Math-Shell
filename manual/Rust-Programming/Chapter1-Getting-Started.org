@@ -1,0 +1,5 @@
+#+TITLE: Getting Starting The Rust Programming Lanaguage.
+#+Author: Mohammed K Alnahdi
+#+Date: 24th Feb 2022
+
+* Intro:

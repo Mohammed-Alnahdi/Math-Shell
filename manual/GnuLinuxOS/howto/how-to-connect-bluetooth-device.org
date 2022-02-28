@@ -1,0 +1,197 @@
+#+TITLE: How To Connect To Bluetooth Device from Linux Terminal
+#+Author: Mohammed K Alnahdi
+#+Date: 26th Feb 2022
+
+* Inrtoduction
+  This tutorial is about how shortcut time to connect Bluetooth devices such as Speakers, Transmitters and any other electronic devices from terminal.
+  In this guide, we will use BlueZ which provide support for the core Bluetooth layers and protocols.
+
+* The Feature of BluZ
+  - Complete modulat implementation.
+  - Symmetric multi processing safe.
+  - Multithreaded data processing.
+  - Support for multiple Bluetooth devices.
+  - Real hardware abstraction.
+  - Standard socket interface to all layers.
+  - Device and service level security support.
+* Installation
+
+** How install BlueZ?
+  Install *BlueZ* package by using package manager
+
+  #+begin_src bash
+  sudo xbps-install
+  #+end_src
+** Add GID to USER
+  the package provide element called *bluetoothctl* utility. You need to add your account to the id group:
+
+  #+begin_src bash
+  sudo usermod -aG lp `whoami`
+  #+end_src
+
+* Enable Bluetooth device
+  The enable services is depending on your init system.
+
+** Enable Bluetooth with SystemD
+   you can enable the services by SystemD usint the command:
+
+   #+begin_src bash
+   systemctl is-enabled bluetooth.service
+   #+end_src
+
+   the resualt of this you will find one word is *enabled*.
+
+   Other wise you can check about status by running the command line:
+
+   #+begin_src bash
+   systemctl status bluetooth.service
+   #+end_src
+
+   the result is like:
+
+   |--------------------------------------------------------------------------------------------------------------------------|
+   | bluetooth.service - Bluetooth service                                                                                    |
+   | Loaded: loaded (/usr/lib/systemd/system/bluetooth.service; enabled; vendor preset: enabled)                              |
+   | Active: active (running) since Sat 2019-11-30 17:14:12 EAT; 3h 55min ago                                                 |
+   | Docs: man:bluetoothd(8)                                                                                                  |
+   | Main PID: 1638 (bluetoothd)                                                                                              |
+   | Tasks: 1 (limit: 18590)                                                                                                  |
+   | Memory: 2.3M                                                                                                             |
+   | CPU: 47ms                                                                                                                |
+   | CGroup: /system.slice/bluetooth.service                                                                                  |
+   | └─1638 /usr/libexec/bluetooth/bluetoothd                                                                                 |
+   |                                                                                                                          |
+   | Nov 30 17:14:12 myfed.example.net systemd[1]: Starting Bluetooth service...                                              |
+   | Nov 30 17:14:12 myfed.example.net bluetoothd[1638]: Bluetooth daemon 5.52                                                |
+   | Nov 30 17:14:12 myfed.example.net systemd[1]: Started Bluetooth service.                                                 |
+   | Nov 30 17:14:12 myfed.example.net bluetoothd[1638]: Starting SDP server                                                  |
+   | Nov 30 17:14:12 myfed.example.net bluetoothd[1638]: Bluetooth management interface 1.14 initialized                      |
+   | Nov 30 21:07:52 myfed.example.net bluetoothd[1638]: Endpoint registered: sender=:1.77 path=/MediaEndpoint/A2DPSink/sbc   |
+   | Nov 30 21:07:52 myfed.example.net bluetoothd[1638]: Endpoint registered: sender=:1.77 path=/MediaEndpoint/A2DPSource/sbc |                                                                                                                                                                                                                                                                                                                                                                              |
+   |--------------------------------------------------------------------------------------------------------------------------|
+
+** Enable Bluz with Runit
+
+* Pair and Connect to a Bluetooth device
+  We are going to use the /bluetoothctl/ CLI. If you have an alternative front-end tool such as Gnome Bluetooth, you can use it instead.
+
+** Ensure Bluetooth Device is not disabled.
+   Checking about wireless and bluetooth enable device is by command /rfkill/:
+
+   #+begin_src bash
+   rfkill
+   #+end_src
+
+   the output will show like this:
+
+   |------------------------------------------------------|
+   | ID TYPE      DEVICE                   SOFT      HARD |
+   | 0 bluetooth tpacpi_bluetooth_sw   blocked unblocked  |
+   | 2 wlan      phy0                unblocked unblocked  |
+   |------------------------------------------------------|
+
+   If it is blocked like the example above please run command below:
+
+   #+begin_src bash
+   sudo rfkill unblock bluetooth
+   #+end_src
+
+   Confirm it is unblocked using /rfkill/.
+
+   |------------------------------------------------------|
+   | ID TYPE      DEVICE                   SOFT      HARD |
+   | 0 bluetooth tpacpi_bluetooth_sw unblocked unblocked  |
+   | 2 wlan      phy0                unblocked unblocked  |
+   | 4 bluetooth hci0                unblocked unblocked  |
+   |------------------------------------------------------|
+
+** Steps to connect device:
+   This is a general outline of pairing a device using /bluetoothctl/
+
+*** Start the /bluetoothctl/ interactive command.
+
+     #+begin_src bash
+     bluetoothctl
+     #+end_src
+
+     the message will show /Agent registered/.
+
+     Then run /show/ to see device details. You will see the UUID for devices.
+
+     #+begin_src bash
+     bluetoothctl show
+     #+end_src
+*** Turn On your Bluetooth Adapter
+    Turning Adapter is by running these command by bluetooth mode:
+
+    #+begin_src bash
+    [bluetooth]# agent KeyboardOnly
+    ;; Agent is already registerd
+    [bluetooth]# default-agent
+    ;; Default agent request successful
+    [bluetooth]# power on
+    ;; Changing power on succeeded
+    #+end_src
+
+*** Scanning and Pairing Steps
+    Do a scan to detect your Bluetooth devices
+
+    #+begin_src bash
+    [bluetooth]# scan on
+    #+end_src
+
+    the result for example is like:
+
+    |----------------------------------------------------------------------------|
+    | Discovery started                                                          |
+    | [CHG] Controller 20:79:18:5E:4B:64 Discovering: yes                        |
+    | [NEW] Device 14:AB:C5:CC:C7:AB 14-AB-C5-CC-C7-AB                           |
+    | [CHG] Device 14:AB:C5:CC:C7:AB TxPower: 8                                  |
+    | [CHG] Device 14:AB:C5:CC:C7:AB Name: DESKTOP-N9GVMQ2                       |
+    | [CHG] Device 14:AB:C5:CC:C7:AB Alias: DESKTOP-N9GVMQ2                      |
+    | [CHG] Device 14:AB:C5:CC:C7:AB UUIDs: 0000110c-0000-1000-8000-00805f9b34fb |
+    | [CHG] Device 14:AB:C5:CC:C7:AB UUIDs: 0000110a-0000-1000-8000-00805f9b34fb |
+    | [CHG] Device 14:AB:C5:CC:C7:AB UUIDs: 0000110e-0000-1000-8000-00805f9b34fb |
+    | [CHG] Device 14:AB:C5:CC:C7:AB UUIDs: 0000111f-0000-1000-8000-00805f9b34fb |
+    | [CHG] Device 14:AB:C5:CC:C7:AB UUIDs: 0000111e-0000-1000-8000-00805f9b34fb |
+    | [NEW] Device 5C:FB:7C:A4:13:C6 JBL Clip 3                                  |
+    |----------------------------------------------------------------------------|
+    
+	Pair with discovered bluetooth device:
+
+	#+begin_src bash
+	[bluetooth]# pair 5C:FB:7C:A4:13:C6
+	Attempting to pair with 5C:FB:7C:A4:13:C6
+	[CHG] Device 5C:FB:7C:A4:13:C6 Connected: yes
+	[CHG] Device 5C:FB:7C:A4:13:C6 UUIDs: 00001108-0000-1000-8000-00805f9b34fb
+	[CHG] Device 5C:FB:7C:A4:13:C6 UUIDs: 0000110b-0000-1000-8000-00805f9b34fb
+	[CHG] Device 5C:FB:7C:A4:13:C6 UUIDs: 0000110c-0000-1000-8000-00805f9b34fb
+	[CHG] Device 5C:FB:7C:A4:13:C6 UUIDs: 0000110e-0000-1000-8000-00805f9b34fb
+	[CHG] Device 5C:FB:7C:A4:13:C6 UUIDs: 0000111e-0000-1000-8000-00805f9b34fb
+	[CHG] Device 5C:FB:7C:A4:13:C6 ServicesResolved: yes
+	[CHG] Device 5C:FB:7C:A4:13:C6 Paired: yes
+	Pairing successful
+
+	[bluetooth]# trust 5C:FB:7C:A4:13:C6
+	[CHG] Device 5C:FB:7C:A4:13:C6 Trusted: yes
+	Changing 5C:FB:7C:A4:13:C6 trust succeeded
+
+	[bluetooth]# paired-devices
+	Device 5C:FB:7C:A4:13:C6 JBL Clip 3
+
+	[bluetooth]# devices
+	Device 5C:FB:7C:A4:13:C6 JBL Clip 3
+	#+end_src
+
+
+	Connect to device after pairing
+
+	#+begin_src bash
+	[bluetooth]# connect 5C:FB:7C:A4:13:C6
+	Attempting to connect to 5C:FB:7C:A4:13:C6
+	[CHG] Device 5C:FB:7C:A4:13:C6 Connected: yes
+	Connection successful
+	#+end_src
+
+
+	

@@ -1,0 +1,109 @@
+#+TITLE: How to install LAMP in Voidlinux
+#+Author: Mohammed K Alnahdi
+#+DATE: 19th Feb 2022
+
+* Introduction
+To install LAMP(Linux, Apache, MySQL/MariaDB, PHP) on Void Linux, follow these steps below.
+
+*NOTE* this has been prepared for ease of use in mind, not security.
+Please do not use these instructions to setup on a public server environment.
+Use other proper manuals instead.
+
+* Install Process:
+  To start process please follow the steps below:
+  
+** Install The Things We Need:
+We need install some package already in /xbps/ repository and this thing is:
+	- *apache* :
+	  	Apache http server.
+	- *php-apache*:
+	  	HTML-embedded scripting language Apache SAPI.
+	- *php-intl*:
+	  	HTML-embedded scripting language Internationalization module.
+	- *mariadb*:
+	  	Fast SQL database server, drop-in replacement for MySQL.
+	- *phpMyAdmin*:
+	  	Web interface for MySQL and MariaDB.
+The command for this as below: 
+
+  #+begin_src bash
+  sudo xbps-install apache php-apache php-intl mariadb phpMyAdmin
+  #+end_src
+
+** Turn On the Services:
+To start Apache run these once to enable the service:
+
+  #+begin_src bash
+  sudo ln -s /etc/sv/apache /var/service/apache
+  sudo ln -s /etc/sv/mysqld /var/service/mysqld
+  #+end_src
+
+then you must run apache service:
+
+  #+begin_src bash
+  sudo sv start apache
+  #+end_src
+
+** Find Your Server
+Your Apache www directory is /srv/www/apache
+
+To have the www directory on your home run the command:
+
+  #+begin_src bash
+  ln -s /srv/www/apache ~/www
+  #+end_src
+
+You will then have a ~www~ item on your home directory. You can then save files there without going to deeap into the filesystem everytime.
+
+** Allow POSIX Implimentation
+Allow writes in the ~www~ directory by run the command
+
+  #+begin_src bash
+  sudo usermod -aG _apache `whoami`
+  sudo chmod -R g+w /srv/www/apache
+  #+end_src
+
+then do a *Reboot* to update the group assignments.
+
+* Make PHP7 work:
+
+** Edit httpd configuration.
+   
+PHP7 does not work out of the box. Apache just prints out PHP code in plain text. It needs some changes for it to work:
+
+  #+begin_src bash
+  sudo vim /etc/apache/httpd.conf
+  #+end_src
+
+Then comment:
+
+
+  #LoadModule mpm_event_module modules/mod_mpm_event.so
+
+then, uncomment:
+
+  LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
+
+To Enabel PHP, add these changes below to /etc/httpd/conf/httpd.conf :
+
+Place this code at the end of the LoadMoule list:
+
+  #+begin_src bash
+  LoadModule php7_module /usr/libexec/httpd/modules/libphp7.so
+  AddHandler php7-script .php
+  #+end_src
+
+place this at the end of the Include list
+
+  #+begin_src bash
+  Include /etc/apache/extra/php7_module.conf
+  #+end_src
+
+** Apply The Changes
+To apply the new changes, run;
+
+  #+begin_src bash
+  sudo sv restart apache
+  #+end_src
+
+  

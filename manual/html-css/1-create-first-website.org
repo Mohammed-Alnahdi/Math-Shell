@@ -1,0 +1,53 @@
+#+TITLE: Creat First Website
+#+Author: Mohammed K Alnahdi
+#+Date: <2022-02-27 Sun>
+
+* Before Create First Web Page.
+Before we start, we need to use text editor - in flexcourses use ATOM. We use Emacs.
+
+** Install ATOM in Linux
+You can install ATOM from them website [https://atom.io/[here]] and download the package or you can find it in repository of your distrobution (Package Manager). If you didn't have debian base distrobution or not found in repository, you can download the package and run thie command:
+
+#+begin_example bash
+ar -xv atom-package.deb
+#+end_example
+
+then you can find the depency.
+
+** Install Emacs
+you can install it from distrobution by command:
+
+#+begin_example bash
+sudo xbps-install emacs-gtk3
+#+end_example
+
+* Creat New Page
+In Emacs or ATOM open new file ending with .html (foo.html). then follow the steps.
+
+** Step One: Write The Type of Documents.
+write the statement of DOCTYPE of file:
+
+#+begin_example html
+<!DOCTYPE html>
+#+end_example
+
+** Step Two: Write the Main Tags.
+every html have main tags like below with littel explaination.
+
+#+begin_example html
+<html>
+
+    <head>
+<title> here we are write the title of page. </title>
+    </head>
+
+    <body>
+<p> here is content of page </p>
+
+
+  </body
+
+  </html>
+#+end_example
+
+in ~tags~ they have two ways to write it. First one is by open tags <html> and end tags </html> like qoutes. The second one is have one tage mention like <meta>.

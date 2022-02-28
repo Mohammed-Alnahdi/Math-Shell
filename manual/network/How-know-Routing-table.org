@@ -1,0 +1,42 @@
+#+Title: How Read Routing Tables
+#+Author: Mohammed K Alnahdi
+#+Date: 12th Feb 2022
+
+* Introduction
+You can access to *Routing Table* by using command ~show ip route~ in PuTTy or Telnet.
+
+** Routing Table Types
+   /there are diffrent ways to setup routing and this is some of set routing./
+*** Dynamic Routing
+*Dynamic Routing* is using protocol called *Dynamic Protocols* and these protocols by to types, depending in /speeds/ and /space/.
+These sections are *Link Status Protocols* and *Distance Vector*.
+**** Link Status
+The *Link Status Protocols* that depends on speed, not space. the Link Status Protocols for example: OSPF and EIGRP.
+***** OSPF
+
+***** EIGRP
+
+**** Distance Vector
+The *Distance Vector* is depends on space, not speed. The Distance Vector use protocols like: IGRP and RIP.
+***** IGRP
+
+***** RIP
+
+**** Expalain:
+|           | Distance | Vector Routing Protocols | Link State Routing Protocols | Path Vector    |
+|-----------+----------+--------------------------+------------------------------+----------------|
+| Classful  | RIP      | IGRP                     |                              | EGP            |
+| Classless | RIPv2    | EIGRP                    | OSPFv2   IS-IS               | BGPv4          |
+| IPv6      | RIPng    | EIGRP for IPv6           | OSPFv3   IS-IS for IPv6      | BGPv4 for IPv6 |
+|-----------+----------+--------------------------+------------------------------+----------------|
+
+*** Default Routing
+
+*** Static Routing
+*Static Routing* show the connection that made by Network Engineer via commands in router.
+In Routing Tables will point this type by *S* charecter, shortcut of *Static*. and Jump will mentioned as setup that made.
+
+*** Direct Connection
+This connection mean Network has been links to router without protocol.
+*Direct Connection* mentioned in Routing Table by *C* Charecter and no jumps value, so, you will see (0).
+

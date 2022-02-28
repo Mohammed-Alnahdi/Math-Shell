@@ -1,0 +1,14 @@
+#+Title: hello
+#+Author: Mohammed K Alnahdi
+#+Date: 26th Feb 2022
+
+* Installation
+
+** RedHat
+
+   #+begin_src bash
+   sudo yum install openssh-server
+   #+end_src
+
+** Debian and Its Depenc-Distro
+   #+begin_src bash

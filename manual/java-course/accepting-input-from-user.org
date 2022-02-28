@@ -1,0 +1,53 @@
+#+Title: How Make Input Syntax in JAVA.
+#+Author: Mohammed K Alnahdi
+#+Date: 14th Feb 2022
+
+* Introduction
+To accepting input from user we need import some packages like =java.util= and need to able use it.
+
+** Step One: import package java.util
+The way how import packages is by using ~import~ by using syntax:
+
+        #+begin_src java
+	// this how import package
+	import java.util.Scanner;
+	#+end_src
+*Scanner* is tools that inside java.util that interacting user to make input.
+
+=Note= if you need to import all tools contain java.util use star like
+
+       #+begin_src java
+       import java.util.*;
+       #+end_src
+
+** Step Two: Assain Command input.
+*Scanner* is tools and if we want to use it, we should make new method for it.
+We will make command *type* and name is made by programmer. To make method we will use:
+
+      #+begin_src java
+      Scanner type = new Scanner(System.in);
+      #+end_src
+
+(System.in) is mean the input will be by user not input from other file.
+
+** Step Three: Save Input in Declaration Variable
+The way of saving input inside variables, Must detrmain the which /Data Type/ that you will save.
+for example: if we save input inside integer variable
+
+    #+begin_src java
+    int number1 = type.nextInt(); //read number1 from user
+    #+end_src
+
+=type= is what we named command in *Step Two*.
+
+* Enter The Input by Type
+
+| Data Type | Method of Input |
+|-----------+-----------------|
+| int       | nextInt()       |
+| float     | nextFloat()     |
+| double    | nextFloat()     |
+|           |                 |
+|-----------+-----------------|
+
+

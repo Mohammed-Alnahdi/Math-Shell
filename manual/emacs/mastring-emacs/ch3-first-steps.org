@@ -1,0 +1,64 @@
+#+TITLE: Chapter 3 - Fisrt Steps in Emacs
+#+Author: Mohammed K Alnahdi
+#+Date: 25th Feb 2022
+
+* Introduction
+After learn about name of things and history about emacs no is part first steps to mastering emacs.
+This tutorial is for Version 25 or newer.
+
+Qoutes
+" I use Emacs, which might be thought og as a thermonuclear word processor."
+	- Neal Stephenson, In the Beginning ... was the Command Line.
+
+* Installing and Starting Emacs
+You can install your emacs from your *Package Manager* and other OS like Windows and MacOSX they have them installation ways.
+In Windows and MacOSX the fanction not work probably such as GNU/Linux Disro.
+
+*Note*
+emacs package is for terminal, and emacs-gtk2 and emacs-gtk3 are for GUI frame like gnome or kde window.
+
+** Starting Emacs
+You can run emacs from command line by using ~emacs~ command. To force run Emacs, you can use argument -nw like:
+
+#+begin_src bash
+emacs -nw
+#+end_src
+
+*** Host of coomand line switches.
+   There's a host of command line switches(flags) you can pass to Emacs, but you only need fout to get started:
+
+   | Switch | Purpose                                                                   |
+   |--------+---------------------------------------------------------------------------|
+   | --help | Display the help                                                          |
+   | -nw    | Forces Emacs to run in terminal mode                                      |
+   | -q     | Do not load an init file(such as init.el).                                |
+   | -Q     | Does not load the site-wide startup file, you init file, nor X resources. |
+   |--------+---------------------------------------------------------------------------|
+** Starting Emacs Client-Server
+   The client-server functioality is fantastic, but I wouldn't spend too much time playing around with it until you're comfortable with Emacs basics.
+   Emacs Client-Server is make quick editting for files. The myriad advantages of Emacs's server mode are:
+   - Apersistent session.
+   - It works well with $EDITOR
+   - Fast file opening.
+   You cannot run emacsclient because it need daemon to run this. To set daemon you should run:
+
+   #+begin_src bash
+   emacs --daemon
+   #+end_src
+
+   Also if you have route server you can use it and run emacsclient instead emacs (the normal binary call).
+
+   The emacsclient binary has its own set of switches(flags) you should know about:
+
+   | Switch | Purpose                                                |
+   |--------+--------------------------------------------------------|
+   | --help | Displays the help.                                     |
+   | -c     | Creates a graphical frame (if X is available)          |
+   |        | or a terminal frame if X is unavailable.               |
+   | -nw    | Creates a terminal frame.                              |
+   | -n     | The client will return immediately instead of waitting |
+   |        | for you to save your changes.                          |
+   |        | (Useful if you just want to open a bunch of files)     |
+   |--------+--------------------------------------------------------|
+
+* Keys

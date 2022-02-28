@@ -1,0 +1,65 @@
+#+TITLE: How move to privilege in router
+#+Author: Mohammed K Alnahdi
+#+Date: 9th Feb 2022
+
+
+* Privilege Execute Mode, Interface Configuration Mode, and Setup Mode
+This Manual for change user mode to super mode (privilege Exec Mode) in Router
+
+** Privilege Exec Mode - (enable) command line
+In router, we didn't use sudo, doas, or su. The only way to change the change privilege mode is by ~enable~ command line
+
+bash```
+Router>			;;this is user mode
+Router>enable		;; this is commande line enable
+Router#			;;this is privilege mode
+```
+then you must Global Configuration Mode before to setup any kind of config and this command is ~config terminal~ 
+
+bash```
+Router# config Terminal	;this way how write Global Configuration mode command. 
+```
+
+** Interface Configuration Mode
+You enable to setup interface without going to privilege mode by using ~enable~ mode. Then enter your command ~config terminal~ for going to global configuration mode, after that enter command  *interface* with your name of interface that you want to configure.
+
+bash```
+Router>
+Router>enable
+Router#config terminal
+Router(config)#interface fastEthernet 0/1 ;this is how write command in interface config Mode.
+```
+if you need to know the command has been executed, the PS1 will change to 
+
+bash```
+Router(config-if)#	; 'if' is shortcut of word interface.
+
+*** Sub Interface Congiguration Mode
+
+
+bash```
+Router> 
+Router>enable
+Router# config terminal
+Router(config)#interface fastEthernet 0/1.1 	;this way to make sub interface config.
+```
+
+*** Routing Protocol Mode
+To enter in Routing mode must enter in  config 
+
+
+bash```
+Router>
+Router>enable
+Router#config terminal
+Router(config)# router eigrp1
+Router(config-router)#
+````
+** Setup Mode
+This mode comes by defaults and comes configuration as configuration;
+
+bash```
+Countinue with configuration dialog? [Yes/no]:
+	  Rommon Mode
+Rommon1 >
+````

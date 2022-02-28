@@ -1,0 +1,38 @@
+#+Title: What is The Programming and Programming Life Cycle?
+#+Author: Mohammed K Alnahdi
+#+Date: 13th Feb 2022
+
+* The Definition
+  *Programming* is a process to solve problem.
+
+* Programming Life Cycle
+  *Programming Life Cycle* is steps write program and executed to solve the problems.
+
+** Step One: Analyze The Problem.
+
+*** Understand Overall The Problem.
+The understanding of problem comes while write all things need in programs with its chartflow for process.
+
+*** Define Problem's Requirments.
+After understanding the problem and drow the chartflow you will should consider the below:
+
+**** Does program require user interaction.
+Sometimes the programs run backgound, system action, or needing user interaction.
+***** if yes, what is input?
+    Must programmer consider what input shuld enter in the code.
+**** What is the expected output?
+
+     input --> Process --> output
+
+=Algorithem= is step-by-step programming solving.
+
+** Step Two: Implement Algorithem
+
+*** Implement The Algorithem.
+    
+**** Implement The Algorithem in Code.
+**** Verfiy That Algorithem is work.
+
+** Step Three: Maintenace
+/Use/ and /Modify/ the program if the problem domain changes. If the problem is complex, divide it into sub-problems.
+dividing will be by analyze each sub-problem as above.
