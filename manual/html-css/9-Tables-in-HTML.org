@@ -1,0 +1,38 @@
+#+TITLE: Tables in HTML
+#+Author: Mohammed K Alnahdi
+#+Date: <2022-02-28 Mon>
+
+
+* Inrtoduction
+The Tables in HTML is hardest tag in HTML. We will explain how to use it below.
+
+* Usage
+To insert Tables in HTML we must call <table> tag then define the row. after that put the content cell.
+- <table> for call table.
+- <tr> is table row.
+- <td> is cell
+
+  #+begin_example html
+<table border="1">
+    <tr>
+        <td>word</td>
+        <td>add ing</td>
+    </tr>
+    <tr>
+        <td>play</td>
+        <td>playing</td>
+    </tr>
+    <tr>
+        <td>run</td>
+        <td>running</td>
+    </tr>
+</table
+  #+end_example
+
+  the table will show like:
+
+  | word | add ing |
+  | play | playing |
+  | run  | running |
+
+  You need add attribute /border/ to make visable table in the table.

@@ -1,0 +1,7 @@
+#+TITLE: Link Pages in The Home
+#+Author: Mohammed K Alnahdi
+#+Date: <2022-03-01 Tue>
+
+
+* Abstract
+You can use /a/ the anchor to link the pages. the steps: creat new page then add anchor tag in index.html.

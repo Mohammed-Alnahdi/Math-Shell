@@ -1,0 +1,34 @@
+#+TITLE: Add Image to Page
+#+Author: Mohammed K Alnahdi
+#+Date: <2022-02-28 Mon>
+
+* What do you need in tag <img>
+In /img/ you need the source attribute. Other thing, you need customize the size of the image if you want.
+
+* Usage
+all you need write inside tag is source with extention of image "foo.jpg". if the file was on other directory we but it like "directory/foo.jpg"
+
+#+begin_example html
+
+<body>
+...
+<img src="foo.jpg">
+...
+</body>
+
+#+end_example
+
+To customize the size is by using attribute (width and height). the value is by pixel as default.
+
+
+#+begin_example html
+
+<body>
+...
+<img src="foo.jpg" width="70" height="10">
+...
+</body>
+
+#+end_example
+
+*Note* if you put only width without height (or oppsite) the scales change automactily.

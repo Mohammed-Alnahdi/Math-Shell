@@ -1,0 +1,28 @@
+#+TITLE: Add Links Inside The Page.
+#+Author: Mohammed K Alnahdi
+#+Date: <2022-02-28 Mon>
+
+* Introduction
+If we add the like directly in page, page will read it as normal text. The way to add link is add anchor tag.
+
+* Usage
+To use anchor tage is by use <a> and the important thing is its attribute /href/ - *Hyper Reference*.
+
+#+begin_example html
+<body>
+...
+<a href="www.gnu.org">GNU website </a>
+...
+</body>
+#+end_example
+
+*** Extra Usage
+There is attribute used to open new tab in browser called /target/ with value /_blank/. To use it see the example below:
+
+#+begin_example html
+<body>
+...
+<a href="www.gnu.org" target="_blank">GNU website</a>
+...
+</body>
+#+end_example

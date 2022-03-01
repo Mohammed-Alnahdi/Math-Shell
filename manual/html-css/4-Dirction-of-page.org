@@ -1,3 +1,27 @@
 #+TITLE: Direction Of Page
 #+Author: Mohammed K Alnahdi
 #+Date: <2022-02-28 Mon>
+
+* Introduction
+The pages in html comes with Left-to-Right direction as default. If you write in hindi or Arabic you find all text comes unrangable. You can use attribute for /body/ tag to change direction.
+
+* Usage
+You can use the attribute by two ways:
+
+** Use dir attribute with <body>
+In this case, you will change all page content direction to its value of attribute.
+
+#+begin_example html
+<body dir="rtl"
+...
+</body>
+#+end_example
+
+/rtl/ is value that change direction to Right-to-Left.
+
+** Use dir attribute with any text tags.
+You can use dir with other text tags such as /h1/ to change direction only which inside this tags
+
+#+begin_example html
+<h1 dir="ltr"> Hello World!!! </h1>
+#+end_example

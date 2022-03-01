@@ -1,0 +1,48 @@
+#+TITLE: Pragraph and Listing
+#+Author: Mohammed K Alnahdi
+#+Date: <2022-02-28 Mon>
+
+* Introduction
+we can add pragraph in the page by using an element /p/. paragraph is block tag and no need to make break between the tags. In additinal we will learn about listing in this org.
+
+* Usage of pragraph
+it is simple way to insert pragraph in page. see the source.
+
+#+begin_example html
+<body>
+...
+<p> the pragraph </p>
+...
+</body>
+#+end_example
+
+* Usage of Listing
+There are two ways of listing in HTML:
+** Un-Order Listing
+If you list things without number. You can use an element /ul/ then /li/ for list.
+
+#+begin_example html
+<body>
+...
+<ul>
+<li> first row </li>
+<li> second row </li>
+</ul>
+...
+</body>
+#+end_example
+
+** Order Listing
+You can listing your list by number. To use that, use an element /ol/ then /li/ for list.
+
+
+#+begin_example html
+<body>
+...
+<ol>
+<li> first row </li>
+<li> second row </li>
+</ol>
+...
+</body>
+#+end_example

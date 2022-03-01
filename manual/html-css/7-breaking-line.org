@@ -1,0 +1,23 @@
+#+TITLE: The Breaking line for Inline.
+#+Author: Mohammed K Alnahdi
+#+Date: <2022-02-28 Mon>
+
+* Introduction
+The tags divid by two type in display and we will explain all of them.
+** Block tags:
+In Block Tags we see the tags takes sprate line such as /h1/ to /h6/.
+** Inline Tags:
+In Inline Tags we see the tags takes beside prefiace element. to break it down is use <br> tag.
+
+* Usage
+To use breaking tag just put it between the element you want to break it.
+
+#+begin_example html
+<body>
+...
+<a href="www.gnu.org"> first Link </a>
+<br>
+<a href+"www.linux.org"> second link</a>
+...
+</body>
+#+end_example

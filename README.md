@@ -1,5 +1,5 @@
 # Math-Shell
-Suckless dwm, simple termina, and dmenu.
+Suckless dwm, simple termina, dmenu and the manual files.
 
 ================================
 

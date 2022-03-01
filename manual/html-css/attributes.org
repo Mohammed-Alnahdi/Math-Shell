@@ -10,13 +10,17 @@ Here I will put all element and them attributes with its value and explaination.
 ** The Header <h1> to <h6>
 /h1/ to /h6/ is element for make text header size.
 
-| attributes | value  | explaination             |
-|------------+--------+--------------------------|
-| align      | center | Make the text in center. |
-|            | left   | Make the text in left.   |
-|            | right  | Make the text in right.  |
-|            |        |                          |
-|------------+--------+--------------------------|
+| attributes | value  | explaination                     |
+|------------+--------+----------------------------------|
+| align      | center | Make the text in center.         |
+|            | left   | Make the text in left.           |
+|            | right  | Make the text in right.          |
+|------------+--------+----------------------------------|
+| dir        | ltr    | change dirction to Left-to-Right |
+|            | rtl    | change dirction to Right-to-Left |
+|------------+--------+----------------------------------|
+|            |        |                                  |
+|------------+--------+----------------------------------|
 
 ** The Font tags <font>
 /font/ element is for change font of text and all cover fonts.
@@ -50,3 +54,73 @@ Here I will put all element and them attributes with its value and explaination.
 | charset    | UTF-8 | change the unicode to UTF-8 for accepting AR language |
 |            |       |                                                       |
 |------------+-------+-------------------------------------------------------|
+
+** Body tag <body>
+/body/ is content of the page.
+
+| attributes | value | explaination                  |
+|------------+-------+-------------------------------|
+| dir        | ltr   | change dirction Left-to-Right |
+|            | rtl   | change dirction Right-to-Left |
+|------------+-------+-------------------------------|
+|            |       |                               |
+|------------+-------+-------------------------------|
+
+** Image tag <img>
+/img/ is have only one side of tags method.
+
+| attributes | value       | explaination                                        |
+|------------+-------------+-----------------------------------------------------|
+| src        | foo.jpg     | insert source image that named foo.jpg              |
+|            | dir/foo.jpg | insert image "foo.jpg" that inside /dir/ directory. |
+|------------+-------------+-----------------------------------------------------|
+| width      | e.g 600     | change width of image to 600px.                     |
+|------------+-------------+-----------------------------------------------------|
+| height     | e.g 300     | change height of image to 300px.                    |
+|------------+-------------+-----------------------------------------------------|
+|            |             |                                                     |
+|------------+-------------+-----------------------------------------------------|
+
+** html tag
+/html/ is the contain all source code of page.
+
+| attributes | value | explaination                        |
+|------------+-------+-------------------------------------|
+| lang       | ar    | all page is contain arabic content. |
+|------------+-------+-------------------------------------|
+
+** Anchor tag for links <a>
+/a/ is element for insert links inside page.
+
+| attributes | value      | explaination                       |
+|------------+------------+------------------------------------|
+| href       | <the link> | is point the link that in page.    |
+|------------+------------+------------------------------------|
+| target     | _blank     | Open new tabs in browser for link. |
+|            |            |                                    |
+|            |            |                                    |
+|------------+------------+------------------------------------|
+
+** Pragraph tag <p>
+/p/ is element for write pragraph. =block=
+
+| attributes | value | explaination           |
+|------------+-------+------------------------|
+| algin      | left  | make pragraph in left  |
+|            | right | make pragraph in right |
+|------------+-------+------------------------|
+|            |       |                        |
+|------------+-------+------------------------|
+
+** Table tag <table>
+/table/ tags to insert table and should use <tr> for row and <td> to cell.
+
+| attributes | value | explaination                         |
+|------------+-------+--------------------------------------|
+| border     |     1 | make border 1 px.                    |
+|            |   50% | make border size 50 percent of page. |
+|            |       |                                      |
+|            |       |                                      |
+|------------+-------+--------------------------------------|
+|            |       |                                      |
+|------------+-------+--------------------------------------|
