@@ -11,6 +11,9 @@ make clean install
 cd ../dmenu-5.0/ 
 make clean install 
 
+cd ../slstatus/
+make clean install
+
 cd ~
 
 echo "# The Keymap" >> .xinitrc
