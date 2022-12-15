@@ -1,0 +1,6 @@
+deb http://deb.debian.org/debian stable main contrib non-free
+deb http://deb.debian.org/debian bullseye-backports main contrib non-free
+deb http://download.webmin.com/download/repository sarge contrib
+deb http://www.deb-multimedia.org stable main non-free
+deb http://download.virtualbox.org/virtualbox/debian bullseye non-free contrib
+deb http://ppa.launchpad.net/apt-fast/stable/ubuntu bionic main 

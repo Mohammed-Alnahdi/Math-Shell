@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name:index_html 
+# key:<pages 
+# --
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>$1</title>
+		<link rel="stylesheet" href=$2>
+		<meta charset="UTF-8"
+	</head>
+
+	<body>
+
+
+
+	</body>
+</html>

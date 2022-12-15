@@ -66,10 +66,14 @@ static const char *cmdprintscreen[] = { "scrot", "/home/mohammed/Pictures/screen
 static const char *increasevoulme[] = { "amixer" , "set", "Master" , "10%+" , NULL };
 static const char *decreasevoulme[] = { "amixer" , "set", "Master" , "10%-" , NULL };
 static const char *mutevoulme[] = { "amixer" , "set", "Master" , "toggle" , NULL };
+static const char *filemanger_ranger[] = { "st" , "-e" , "ranger", NULL };
+static const char *input_method[] = { "toggleinput", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,		XK_p,	   spawn,	   {.v = filemanger_ranger}},
+	{0,                             XK_F11,    spawn,          {.v = input_method}},
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
