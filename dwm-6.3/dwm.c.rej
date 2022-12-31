@@ -1,0 +1,33 @@
+--- dwm.c
++++ dwm.c
+@@ -65,7 +65,6 @@ enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
+        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
+ enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
+ enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
+-       ClkExBarLeftStatus, ClkExBarMiddle, ClkExBarRightStatus,
+        ClkClientWin, ClkRootWin, ClkLast }; /* clicks */
+ 
+ typedef union {
+@@ -239,8 +234,6 @@ static void zoom(const Arg *arg);
+ /* variables */
+ static const char broken[] = "broken";
+ static char stext[256];
+-static char estextl[256];
+-static char estextr[256];
+ static int screen;
+ static int sw, sh;           /* X display screen geometry width, height */
+ static int bh, blw = 0;      /* bar geometry */
+@@ -447,13 +440,6 @@ buttonpress(XEvent *e)
+ 			click = ClkStatusText;
+ 		else
+ 			click = ClkWinTitle;
+-	} else if (ev->window == selmon->extrabarwin) {
+-		if (ev->x < (int)TEXTW(estextl))
+-			click = ClkExBarLeftStatus;
+-		else if (ev->x > selmon->ww - (int)TEXTW(estextr))
+-			click = ClkExBarRightStatus;
+-		else
+-			click = ClkExBarMiddle;
+ 	} else if ((c = wintoclient(ev->window))) {
+ 		focus(c);
+ 		restack(selmon);

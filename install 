@@ -1,0 +1,15 @@
+#!/bin/sh
+#installing Math-Shell
+
+
+# Welcome Messege
+
+cat<<'EOF'
+
+╭━╮╭━╮╱╱╭╮╭╮╱╱╱╱╭━━━┳╮╱╱╱╱╭╮╭╮    Mohammed K Alnahdi
+┃┃╰╯┃┃╱╭╯╰┫┃╱╱╱╱┃╭━╮┃┃╱╱╱╱┃┃┃┃    Network Engineer and Sysadmin 
+┃╭╮╭╮┣━┻╮╭┫╰━╮╱╱┃╰━━┫╰━┳━━┫┃┃┃    Void Linux - Enter To Void 
+┃┃┃┃┃┃╭╮┃┃┃╭╮┣━━╋━━╮┃╭╮┃┃━┫┃┃┃    Email: m.kh.alnahdi@gmail.com
+┃┃┃┃┃┃╭╮┃╰┫┃┃┣━━┫╰━╯┃┃┃┃┃━┫╰┫╰╮   GitHub: @Mohammed-Alnahdi
+╰╯╰╯╰┻╯╰┻━┻╯╰╯╱╱╰━━━┻╯╰┻━━┻━┻━╯   Twitter: @alnahdi_eng
+EOF

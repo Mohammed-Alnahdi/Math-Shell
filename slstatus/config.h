@@ -66,17 +66,15 @@ static const char unknown_str[] = "n/a";
 
 static const struct arg args[] = {
 	/* function format          argument */
-  { battery_state,  "  %s  ",            "BAT0" }, /* Status of Battery */
+  { battery_state,  " %s  ",            "BAT0" }, /* Status of Battery */
   { battery_perc,  "%s",             "BAT0" }, /* Percentage of Battery */
   { hostname, "|   %s " , NULL},
-//  { hostname, "|^c#222222^^b#5567a1^   ^b#8d9fd9^ %s ^b#222222^^c#bbbbbb^", NULL},
-//  { swap_free, "^c#bbbbbb^| %s",              NULL},/* swap total */
-  { ram_free, "| %s",                NULL},  /* Ram percecent*/ 
+  { ram_free, "|   %s ",                NULL},  /* Ram percecent*/ 
   { cpu_perc, "|[ %s]",                NULL},/*  CPU */
-  { wifi_essid, "| %s",               "wlp5s0"},
-  { keymap, "|  %s",			NULL},
-  { datetime, "| %s",                    "%F" }, /* Date Calander */
-  { datetime, "| %s ",                  "%r"}, /* Time Clock */
+  { wifi_essid, "|  %s ",               "wlp5s0"},
+  { keymap, "|   %s ",			NULL},
+  { datetime, "|  %s ",                    "%F" }, /* Date Calander */
+  { datetime, "|  %s ",                  "%r"}, /* Time Clock */
 
 };
 
